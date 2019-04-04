@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <div class="jumbotron">
+    <h1 class="display-4"><b>Survey Questions</b></h1>
+    <hr class="my-4">
+    <p><b>About You</b></p>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="nameA">Name (required)</label>
+      <input type="name" class="form-control" id="nameA" placeholder="">
+    </div>
+    <!-- <div class="form-group">
+                  <label for="imageA">Link to Photo Image (required)</label>
+                  <input type="image" class="form-control" id="imageA" placeholder=" ">
+                </div> -->
+
+    <div class="form-group">
+      <label for="exampleFormControlFile1">Upload Photo Image (required)</label>
+      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+
+    <div class="form-group">
+      <label for="key1">In a discussion, truth should be more important than people’s sensitivities.</label>
+      <select class="form-control" id="key1">
+        <option></option>
+        <option>1(strongly disagree)</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5(strongly agree)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="key2">Whats your credit score?</label>
+      <select class="form-control" id="key2">
+        <option></option>
+        <option>301-400</option>
+        <option>401-500</option>
+        <option>501-600</option>
+        <option>601-700</option>
+        <option>701-800</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="key3">What is the highest education level you have?</label>
+      <select class="form-control" id="key3">
+        <option></option>
+        <option>Middle school</option>
+        <option>GED</option>
+        <option>High school diploma</option>
+        <option>Some college</option>
+        <option>College degree</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="key4">Do you smoke?</label>
+      <select class="form-control" id="key4">
+        <option></option>
+        <option>yes</option>
+        <option>no</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="key5">How long was your last serious relationship?</label>
+      <select class="form-control" id="key5">
+        <option></option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5 or more</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="key6">What holidays do you enjoy celebrating?</label>
+      <select class="form-control" id="key6">
+        <option></option>
+        <option>July 4th</option>
+        <option>Thanks-giving</option>
+        <option>Christmas</option>
+        <option>Halloween</option>
+        <option>Valentines Day</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="key7">If you don't have any kids, how many would you like?</label>
+      <select class="form-control" id="key7">
+        <option></option>
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="key8">When in trouble who do you call?</label>
+      <select class="form-control" id="key8">
+        <option></option>
+        <option>mom</option>
+        <option>dad</option>
+        <option>sister</option>
+        <option>brother</option>
+        <option>other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="key9"></label>
+      <select class="form-control" id="key9">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="key10">Question 10</label>
+      <select class="form-control" id="key10">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+
+    <a class="btn btn-primary btn-lg" role="button" id="submit">Submit Survey</a>
+
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+      $("#submit").on("click", function (event) {
+        event.preventDefault();
+
+        var newFriend = {
+          name: $("#nameA").val().trim(),
+          photo: $("#exampleFormControlFile1").val().trim(),
+          scores: [
+            $("#key1").val().trim(),
+            $("#key2").val().trim(),
+            $("#key3").val().trim(),
+            $("#key4").val().trim(),
+            $("#key5").val().trim(),
+            $("#key6").val().trim(),
+            $("#key7").val().trim(),
+            $("#key8").val().trim(),
+            $("#key9").val().trim(),
+            $("#key10").val().trim()
+          ]
+        };
+        console.log(newFriend);
+
+        $.post("/api/friends", newFriend, function (data) {
+          // if they match.. tell user u have a match
+          if (data) {
+            alert("Yay! You have a match!");
+          };
+
+
+          // clear the form when u press submit
+          $("#key1").val("");
+          $("#key2").val("");
+          $("#key3").val("");
+          $("#key4").val("");
+          $("#key5").val("");
+          $("#key6").val("");
+          $("#key7").val("");
+          $("#key8").val("");
+          $("#key9").val("");
+          $("#key10").val("");
+
+        });
+      });
+    </script>
+
+</body>
+
+</html>
+
+
+</html>
