@@ -2,47 +2,46 @@ var path = require("path");
 
 var friendData = require("../app/data/friends");
 
-module.exports = function(app){
-
-    
-app.get("/api/friends", function(req, res) {
-    res.json(friendData);
+module.exports = function (app) {
 
 
-});
-app.post("/api/friends", function(req, res) {
+    app.get("/api/friends", function (req, res) {
+        res.json(friendData);
 
-    //grabs userInput scores to compare w/ friends in friendCount array
-    var userInput = req.body;
-    console.log(userInput);
-    var scores = userInput.scores;
-    console.log(scores);
-    var bestMatch = 0;
 
-    //runs the current friends in data
-    //algorithm
-for(var i=0; i<friendData.length; i++){
-    var scoresDiff = 0;
-    
-    
-for(var m=0; m<scores.length; m++){
-    //math.abs minusing one score from another, youre not getting a -#
-scoresDiff += Math.abs(parseInt(friendData[i].scores[m])- parseInt(userInput[m]));
-}
-}
+    });
+    app.post("/api/friends", function (req, res) {
 
-    for(var i=0; i<scores.length; i++){
-        if(scores[i] <= scores[bestMatch]){
-            bestMatch = i;
+        //grabs userInput scores to compare w/ friends in friendCount array
+        var userInput = req.body;
+        var bestMatch;
+        var totalDifference = 1000
+
+        //runs the current friends in data
+        //algorithm
+        for (var i = 0; i < friendData.length; i++) {
+            var diff = 0;
+
+
+            for (var m = 0; m < friendData[i].scores.length; m++) {
+                //math.abs minusing one score from another, youre not getting a -#
+                diff += Math.abs(parseInt(userInput.scores[m]) - parseInt(friendData[i].scores[m]));
+            }
+
+            if (diff < totalDifference) {
+                totalDifference = diff;
+                bestMatch = friendData[i]
+            }
+
+
         }
-    }
 
-    var b = friendData[bestMatch];
-    res.json(b);
 
-friendData.push(req.body);
 
-});
+        friendData.push(userInput);
+        res.json(bestMatch);
+
+    });
 };
 //console.log(newfriendly);
 //tables.push(newfriendly);
